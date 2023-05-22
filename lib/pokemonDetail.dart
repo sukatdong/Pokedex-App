@@ -59,9 +59,11 @@ class _PokemonDetailState extends State<PokemonDetail> {
         symbol = '\$';
         break;
       case 'PHP':
+        amount=amount*55.7;
         symbol = '₱';
         break;
       case 'BHD':
+        amount=amount*0.38;
         symbol = 'BD';
         break;
       default:
