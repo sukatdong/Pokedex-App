@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:ini_pokemon/encrypt.dart';
 import 'login.dart';
 import 'user.dart';
 import 'main.dart';
+
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -24,7 +26,6 @@ class _RegisterState extends State<Register> {
     _myBox = Hive.box(boxUser);
   }
 
-
   void _submit() {
     final form = _formKey.currentState;
     if (form!.validate()) {
@@ -37,15 +38,17 @@ class _RegisterState extends State<Register> {
         );
         return;
       }
-
-      final user = UserModel(password: _inputPassword, username: Username, );
+      final enkripsi = EncryptData.encryptAES(_inputPassword);
+      final user = UserModel(
+        password: enkripsi,
+        username: Username,
+      );
       _myBox.put(_inputUsername, user);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('User registered successfully')),
-
       );
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Login()), (route) => false);
-
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) => Login()), (route) => false);
     }
   }
 
@@ -75,7 +78,7 @@ class _RegisterState extends State<Register> {
                   prefixIcon: Icon(Icons.person),
                 ),
                 validator: (value) =>
-                value!.isEmpty ? 'Please enter a username' : null,
+                    value!.isEmpty ? 'Please enter a username' : null,
                 onSaved: (value) => _inputUsername = value!.toLowerCase(),
               ),
               SizedBox(height: 16.0),
@@ -97,7 +100,7 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 validator: (value) =>
-                value!.isEmpty ? 'Please enter a password' : null,
+                    value!.isEmpty ? 'Please enter a password' : null,
                 onSaved: (value) => _inputPassword = value!,
                 obscureText: _obscureText,
               ),
@@ -112,5 +115,4 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
-
 }
