@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ini_pokemon/aboutapplication.dart';
+import 'package:ini_pokemon/camera.dart';
 import 'package:ini_pokemon/homepage.dart';
 import 'package:ini_pokemon/profile.dart';
 
@@ -16,7 +17,8 @@ class _botnavbarState extends State<botnavbar> {
   final List<Widget> _tabs = [
     HomePage(),
     ProfilePage(),
-    AboutApplicationPage()
+    Camera(),
+    AboutApplicationPage(),
   ];
 
   @override
@@ -45,6 +47,10 @@ class _botnavbarState extends State<botnavbar> {
             label: 'Profile',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.camera),
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.account_balance_outlined),
             label: 'About',
           ),
@@ -53,15 +59,5 @@ class _botnavbarState extends State<botnavbar> {
     );
   }
 }
-
-class FavoritesScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Home Screen'),
-    );
-  }
-}
-
 
 

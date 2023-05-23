@@ -4,7 +4,6 @@ import 'package:ini_pokemon/encrypt.dart';
 import 'login.dart';
 import 'user.dart';
 import 'main.dart';
-
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 

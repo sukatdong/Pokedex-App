@@ -3,19 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 class PokemonDetail extends StatefulWidget {
   final pokeDetail;
   final Color color;
   final int heroTag;
 
-  const PokemonDetail({Key? key, this.pokeDetail, required this.color, required this.heroTag}) : super(key: key);
+  const PokemonDetail(
+      {Key? key, this.pokeDetail, required this.color, required this.heroTag})
+      : super(key: key);
   @override
   State<PokemonDetail> createState() => _PokemonDetailState();
 }
 
 class _PokemonDetailState extends State<PokemonDetail> {
-
   String selectedTimezone = 'WIB';
   String currentTime = '';
 
@@ -27,10 +27,12 @@ class _PokemonDetailState extends State<PokemonDetail> {
         currentTime = DateFormat('HH:mm').format(now);
         break;
       case 'WIT':
-        currentTime = DateFormat('HH:mm').format(now.subtract(Duration(hours: 1)));
+        currentTime =
+            DateFormat('HH:mm').format(now.subtract(Duration(hours: 1)));
         break;
       case 'WITA':
-        currentTime = DateFormat('HH:mm').format(now.subtract(Duration(hours: 2)));
+        currentTime =
+            DateFormat('HH:mm').format(now.subtract(Duration(hours: 2)));
         break;
       case 'London':
         currentTime = DateFormat('HH:mm').format(now.add(Duration(hours: 7)));
@@ -59,11 +61,11 @@ class _PokemonDetailState extends State<PokemonDetail> {
         symbol = '\$';
         break;
       case 'PHP':
-        amount=amount*55.7;
+        amount = amount * 55.7;
         symbol = '₱';
         break;
       case 'BHD':
-        amount=amount*0.38;
+        amount = amount * 0.38;
         symbol = 'BD';
         break;
       default:
@@ -91,7 +93,6 @@ class _PokemonDetailState extends State<PokemonDetail> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-
       backgroundColor: widget.color,
       body: Stack(
         alignment: Alignment.center,
@@ -108,7 +109,6 @@ class _PokemonDetailState extends State<PokemonDetail> {
               ),
             ),
           ),
-
           Positioned(
             top: 85,
             right: 10,
@@ -123,7 +123,7 @@ class _PokemonDetailState extends State<PokemonDetail> {
               dropdownColor: Colors.grey, // Warna background oranye
               items: <String>['WIB', 'WIT', 'WITA', 'London']
                   .map<DropdownMenuItem<String>>(
-                    (String value) {
+                (String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(
@@ -139,7 +139,6 @@ class _PokemonDetailState extends State<PokemonDetail> {
               ).toList(),
             ),
           ),
-
           Positioned(
             top: 60,
             right: 25,
@@ -152,35 +151,44 @@ class _PokemonDetailState extends State<PokemonDetail> {
               ),
             ),
           ),
-
-
           Positioned(
             top: 35,
             left: 5,
-            child: IconButton(onPressed: (){
-              Navigator.pop(context);
-            }, icon: Icon(Icons.arrow_back, color: Colors.white, size: 30,)),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                  size: 30,
+                )),
           ),
           Positioned(
-              top:90,
+              top: 90,
               left: 25,
-
-              child: Text(widget.pokeDetail['name'], style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30
-              ))
-          ),
+              child: Text(widget.pokeDetail['name'],
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30))),
           Positioned(
-              top:height*0.18,
+              top: height * 0.18,
               right: -30,
-              child: Image.asset('images/pokeball.png', height: 200, fit: BoxFit.fitWidth,)
-          ),
+              child: Image.asset(
+                'images/pokeball.png',
+                height: 200,
+                fit: BoxFit.fitWidth,
+              )),
           Positioned(
             bottom: 0,
             child: Container(
               width: width,
               height: height * 0.6,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)),
                 color: Colors.white,
               ),
               child: Padding(
@@ -188,172 +196,202 @@ class _PokemonDetailState extends State<PokemonDetail> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 50,),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
-                      Container(
-                        width : width * 0.3,
-                          child: Text('Name', style: TextStyle(
-                            color: Colors.blueGrey,fontSize: 16
-                          ),)
-                      ),
-                      Container(
-                          width : width * 0.3,
-                          child: Text(widget.pokeDetail['name'],style: TextStyle(
-                              color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                          ))
-                      ),
-                      ]
-                      ),
+                    SizedBox(
+                      height: 50,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
+                          children: [
                             Container(
-                                width : width * 0.3,
-                                child: Text('Height', style: TextStyle(
-                                    color: Colors.blueGrey,fontSize:16
-                                ),)
-                            ),
+                                width: width * 0.3,
+                                child: Text(
+                                  'Name',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 16),
+                                )),
                             Container(
-                                width : width * 0.3,
-                                child: Text(widget.pokeDetail['height'],style: TextStyle(
-                                    color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                                ))
-                            ),
-                          ]
-                      ),
+                                width: width * 0.3,
+                                child: Text(widget.pokeDetail['name'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))),
+                          ]),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
+                          children: [
                             Container(
-                                width : width * 0.3,
-                                child: Text('Weight', style: TextStyle(
-                                    color: Colors.blueGrey,fontSize: 16
-                                ),)
-                            ),
+                                width: width * 0.3,
+                                child: Text(
+                                  'Height',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 16),
+                                )),
                             Container(
-                                width : width * 0.3,
-                                child: Text(widget.pokeDetail['weight'],style: TextStyle(
-                                    color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                                ))
-                            ),
-                          ]
-                      ),
+                                width: width * 0.3,
+                                child: Text(widget.pokeDetail['height'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))),
+                          ]),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
+                          children: [
                             Container(
-                                width : width * 0.3,
-                                child: Text('Spawn Time', style: TextStyle(
-                                    color: Colors.blueGrey,fontSize: 16
-                                ),)
-                            ),
+                                width: width * 0.3,
+                                child: Text(
+                                  'Weight',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 16),
+                                )),
                             Container(
-                                width : width * 0.3,
-                                child: Text(widget.pokeDetail['spawn_time'],style: TextStyle(
-                                    color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                                ))
-                            ),
-                          ]
-                      ),
+                                width: width * 0.3,
+                                child: Text(widget.pokeDetail['weight'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))),
+                          ]),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
+                          children: [
                             Container(
-                                width : width * 0.3,
-                                child: Text('Weakness', style: TextStyle(
-                                    color: Colors.blueGrey,fontSize: 16
-                                ),)
-                            ),
+                                width: width * 0.3,
+                                child: Text(
+                                  'Spawn Time',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 16),
+                                )),
+                            Container(
+                                width: width * 0.3,
+                                child: Text(widget.pokeDetail['spawn_time'],
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))),
+                          ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                                width: width * 0.3,
+                                child: Text(
+                                  'Weakness',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 16),
+                                )),
                             Container(
                                 // width : width * 0.3,
-                                child: Text(widget.pokeDetail['weaknesses'].join(', '),style: TextStyle(
-                                    color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                                ))
-                            ),
-                          ]
-                      ),
+                                child: Text(
+                                    widget.pokeDetail['weaknesses'].join(', '),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))),
+                          ]),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
+                          children: [
                             Container(
-                                width : width * 0.3,
-                                child: Text('Pre Form', style: TextStyle(
-                                    color: Colors.blueGrey,fontSize: 16
-                                ),)
-                            ),
-                            widget.pokeDetail['prev_evolution'] != null ?
-                            SizedBox(
-                              height: 20,
-                              width: width*0.55,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: widget.pokeDetail['prev_evolution'].length,
-                                itemBuilder: (context, index){
-                                  return Padding(
-                                    padding: const EdgeInsets.only(right: 8.0,),
-                                    child: Text(widget.pokeDetail['prev_evolution'][index]['name'],style: TextStyle(
-                                        color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                                    )),
-                                  );},
-                              ),
-                            ): Text('Just Hatched',style: TextStyle(
-                                color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                            ))
-
-                          ]
-                      ),
+                                width: width * 0.3,
+                                child: Text(
+                                  'Pre Form',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 16),
+                                )),
+                            widget.pokeDetail['prev_evolution'] != null
+                                ? SizedBox(
+                                    height: 20,
+                                    width: width * 0.55,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: widget
+                                          .pokeDetail['prev_evolution'].length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                            right: 8.0,
+                                          ),
+                                          child: Text(
+                                              widget.pokeDetail[
+                                                      'prev_evolution'][index]
+                                                  ['name'],
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold)),
+                                        );
+                                      },
+                                    ),
+                                  )
+                                : Text('Just Hatched',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))
+                          ]),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children:[
+                          children: [
                             Container(
-                                width : width * 0.3,
-                                child: Text('Evolution', style: TextStyle(
-                                    color: Colors.blueGrey,fontSize: 16
-                                ),)
-                            ),
-                            widget.pokeDetail['next_evolution'] != null ?
-                            SizedBox(
-                              height: 20,
-                              width: width*0.55,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: widget.pokeDetail['next_evolution'].length,
-                              itemBuilder: (context, index){
-                                return Padding(
-                                  padding: const EdgeInsets.only(right: 8.0,),
-                                  child: Text(widget.pokeDetail['next_evolution'][index]['name'],style: TextStyle(
-                                      color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                                  )),
-                                );},
-                              ),
-                            ): Text('Maxed Out',style: TextStyle(
-                                color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold
-                            ))
-
-                          ]
-                      ),
+                                width: width * 0.3,
+                                child: Text(
+                                  'Evolution',
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 16),
+                                )),
+                            widget.pokeDetail['next_evolution'] != null
+                                ? SizedBox(
+                                    height: 20,
+                                    width: width * 0.55,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: widget
+                                          .pokeDetail['next_evolution'].length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                            right: 8.0,
+                                          ),
+                                          child: Text(
+                                              widget.pokeDetail[
+                                                      'next_evolution'][index]
+                                                  ['name'],
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold)),
+                                        );
+                                      },
+                                    ),
+                                  )
+                                : Text('Maxed Out',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))
+                          ]),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -384,7 +422,6 @@ class _PokemonDetailState extends State<PokemonDetail> {
                         ],
                       ),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -411,8 +448,9 @@ class _PokemonDetailState extends State<PokemonDetail> {
                                       selectedCurrency = newValue!;
                                     });
                                   },
-                                  items: currencies.map<DropdownMenuItem<String>>(
-                                        (String value) {
+                                  items:
+                                      currencies.map<DropdownMenuItem<String>>(
+                                    (String value) {
                                       return DropdownMenuItem<String>(
                                         value: value,
                                         child: Text(value),
@@ -435,48 +473,40 @@ class _PokemonDetailState extends State<PokemonDetail> {
                         ],
                       ),
                     ),
-
-
-
                   ],
                 ),
               ),
-
             ),
           ),
           Positioned(
             top: 140,
             left: 20,
             child: Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
-                  child: Text(widget.pokeDetail['type'].join(', '),
-                    style: TextStyle(color: Colors.white)
-                  ),
-                ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.black26
-
-                  ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
+                child: Text(widget.pokeDetail['type'].join(', '),
+                    style: TextStyle(color: Colors.white)),
+              ),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.black26),
             ),
           ),
-
           Positioned(
-            top: (height*0.18),
-            left: (width/2)-100,
+            top: (height * 0.18),
+            left: (width / 2) - 100,
             child: Hero(
               tag: widget.heroTag,
               child: CachedNetworkImage(
-              imageUrl: widget.pokeDetail['img'],
+                imageUrl: widget.pokeDetail['img'],
                 height: 200,
                 fit: BoxFit.fitHeight,
-          ),
+              ),
             ),
           ),
         ],
       ),
     );
-
   }
 }

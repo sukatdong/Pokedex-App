@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'user.dart';
 
 String boxUser='userbox';
+
 String Username = '';
 void main() async{
   runApp(const MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
       ),
       home: Login(),
+      //  home : Camera(),
        // home: HomePage(),
     );
   }

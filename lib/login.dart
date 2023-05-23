@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ini_pokemon/encrypt.dart';
@@ -42,7 +43,6 @@ class _LoginState extends State<Login> {
   }
 
   void _submit() {
-
     final form = _formKey.currentState;
     if (form!.validate()) {
       form.save();
@@ -55,7 +55,6 @@ class _LoginState extends State<Login> {
         return;
       }
 
-
       final user = _myBox.get(_inputUsername);
       final dekripsi = EncryptData.decryptAES(user!.password);
       if (_inputPassword == dekripsi) {
@@ -63,7 +62,7 @@ class _LoginState extends State<Login> {
           Username = _inputUsername;
         });
         // Save user's session
-        if(_rememberMe){
+        if (_rememberMe) {
           _prefs.setBool('isLoggedIn', true);
           _prefs.setString('username', _inputUsername);
         } else {
@@ -75,12 +74,12 @@ class _LoginState extends State<Login> {
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Invalid password')),
+          SnackBar(content: Text('Invalid username or password')),
         );
       }
-
     }
   }
+
 
   void _register() {
     Navigator.push(
