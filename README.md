@@ -17,3 +17,10 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/1.png)
+![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/2.png)
+![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/3.png)
+![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/4.png)
+![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/5.png)
+![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/6.png)
+![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/7.png)
+![Teks Alternatif](https://github.com/sukatdong/Pokedex-App/blob/master/Presentation/8.png)
