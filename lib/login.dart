@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ini_pokemon/encrypt.dart';
@@ -80,7 +79,6 @@ class _LoginState extends State<Login> {
     }
   }
 
-
   void _register() {
     Navigator.push(
       context,
@@ -99,23 +97,27 @@ class _LoginState extends State<Login> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.all(24.0),
+        padding: EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: <Widget>[
               Image.asset(
                 'images/pika.png',
-                fit: BoxFit.cover,
+                // fit: BoxFit.cover,
+                width: 350, // ukuran lebar baru
+                height: 350, // ukuran tinggi baru
               ),
-              SizedBox(height: 25.0),
+
+              SizedBox(height: 5.0),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Username',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.person),
                 ),
-                validator: (value) => value!.isEmpty ? 'Please enter a username' : null,
+                validator: (value) =>
+                    value!.isEmpty ? 'Please enter a username' : null,
                 onSaved: (value) => _inputUsername = value!.toLowerCase(),
               ),
               SizedBox(height: 16.0),
@@ -136,7 +138,8 @@ class _LoginState extends State<Login> {
                     },
                   ),
                 ),
-                validator: (value) => value!.isEmpty ? 'Please enter a password' : null,
+                validator: (value) =>
+                    value!.isEmpty ? 'Please enter a password' : null,
                 onSaved: (value) => _inputPassword = value!,
                 obscureText: _obscureText,
               ),
@@ -154,8 +157,17 @@ class _LoginState extends State<Login> {
                 onPressed: _register,
                 child: Text('Create Account'),
                 style: ElevatedButton.styleFrom(
-                  // backgroundColor: Colors.teal,
-                ),
+                    // backgroundColor: Colors.teal,
+                    ),
+              ),
+              CheckboxListTile(
+                title: Text("Remember me"),
+                value: _rememberMe,
+                onChanged: (newValue) {
+                  setState(() {
+                    _rememberMe = newValue!;
+                  });
+                },
               ),
             ],
           ),
@@ -163,5 +175,4 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-
 }
